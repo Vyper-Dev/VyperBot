@@ -3,8 +3,10 @@ import random
 import sys
 import os
 import os.path
+from lyricsgenius import Genius
 from discord.ext import commands
 
+api = genius.Genius(config.GENIUS_TOKEN)
 TOKEN = "OTQ5NDcyNzUwNjU1OTA1ODIy.GvG8E8.CFZBBP-IBQDd4YTYHcZ6XzsHrPnj8GN6UYRyvA"
 client = discord.Client()
 bot = commands.Bot(command_prefix='!', intents = discord.Intents.all())
@@ -91,6 +93,18 @@ async def close(ctx):
 async def cat(ctx):
     Cats=["https://tenor.com/view/meme-cat-gif-23774444", "https://tenor.com/view/cute-kitty-best-kitty-alex-cute-pp-kitty-omg-yay-cute-kitty-munchkin-kitten-gif-15917800", "https://tenor.com/view/mybc-gif-24798373", "https://tenor.com/view/cat-cats-cat-love-cat-kiss-kiss-gif-24653113"]
     await ctx.channel.send(random.choice(Cats))
+
+@bot.command()
+async def lyrics(ctx):
+    a = input('Enter an artist`s name: (ex: Radiohead)')
+    a
+    s = input('Enter a song by this artist: (Weird Fishes/Arpeggi)')
+    s
+    lyrics = api.search_song(ctx, artist.name).lyrics
+    print(lyrics)    
+
+    await ctx.reply(f' """"{lyrics}"""  ')
+    
 
     
 #Test
