@@ -1,12 +1,8 @@
 import discord
 import random
 import sys
-import os
-import os.path
-from lyricsgenius import Genius
 from discord.ext import commands
 
-api = genius.Genius(config.GENIUS_TOKEN)
 TOKEN = "OTQ5NDcyNzUwNjU1OTA1ODIy.GvG8E8.CFZBBP-IBQDd4YTYHcZ6XzsHrPnj8GN6UYRyvA"
 client = discord.Client()
 bot = commands.Bot(command_prefix='!', intents = discord.Intents.all())
@@ -34,6 +30,17 @@ async def on_disconnect():
 async def on_resume():
     print(f'{bot.user} has resumed connection')
 
+#Word Definitions
+Cum = ["cum", "CUM", "Cum", "CUm", "cUM", "cUm", "cuM"]
+Pog = ["pog", "Pog", "POg", "POG", "pOG", "poG", "pOG"]
+Fuck = []
+Shit = []
+Bitch = []
+Naughty_Words = [Fuck, Shit, Bitch]
+
+#gifs and etc
+Cats = ["https://tenor.com/view/meme-cat-gif-23774444", "https://tenor.com/view/cute-kitty-best-kitty-alex-cute-pp-kitty-omg-yay-cute-kitty-munchkin-kitten-gif-15917800", "https://tenor.com/view/mybc-gif-24798373", "https://tenor.com/view/cat-cats-cat-love-cat-kiss-kiss-gif-24653113"]
+POG = []
 
 #Logging Users
 @bot.event
@@ -41,6 +48,7 @@ async def on_typing(Channel, User, When):
     Typing = f'{User.name} has started typing in [{Channel.guild}]'
     Guild = str(Channel.guild)
     
+    #Define server IDs for log files
     if "VyperBot's Playground" == Guild:
         a.write(Typing)
         a.write("\n")
@@ -48,22 +56,36 @@ async def on_typing(Channel, User, When):
         b.write(Typing)
         b.write("\n")
     print(Typing)
-    
+
+#Actions based on text recogntion
 @bot.event
 async def on_message(message):
     if message.author == bot.user:
          return
-     
+    
+    #To test if text recognition is working
     if message.content == 'Test':
          response = "Good Test!"
          await message.channel.send(response)
     
-    if "cum" in message.content or "CUM" in message.content:
+    #If "cum" in any spelling is detected
+    if Cum in message.content:
         await message.reply("Haha you said cum!", mention_author=True)
+        
+    #If swears/slurs in any spelling are detected
+    if Naughty_Words in message.content:
+        await message.channel.purge(limit=1)
+        await message.reply("You said a naughty word! We don't do that here", mention_author=True)
+        
+    #If "pog" in any spelling is detected
+    if Pog in message.content:
+        await message.reply("POG!" + random.choice(POG), mention_author=True)
          
+    #Log when a user messages
     Message = f'{message.author} sent: "{message.content}" in guild: [{message.guild}]'
     Guild = str(message.guild)
     
+    #Define server IDs for log files
     if "VyperBot's Playground" == Guild:
         a.write(Message)
         a.write("\n")
@@ -72,12 +94,13 @@ async def on_message(message):
         b.write("\n")
     print(Message)
     
+    #Process to allow commands after text recognition
     await bot.process_commands(message)
-    
+
+#Log when a message is deleted
 @bot.event
 async def on_message_delete(message):
     print(f'{message.author} deleted: "{message.content}"')
-
     
 #Commands
 @bot.command(help="Clears all messages in the corrosponding channel")
@@ -89,23 +112,9 @@ async def close(ctx):
     await ctx.reply("Log file saved. Please check the root folder", mention_author=True)
     sys.exit()
 
-@bot.command(help="Shuts down logging and saves the file")
+@bot.command(help="Shows a random gif of a cat")
 async def cat(ctx):
-    Cats=["https://tenor.com/view/meme-cat-gif-23774444", "https://tenor.com/view/cute-kitty-best-kitty-alex-cute-pp-kitty-omg-yay-cute-kitty-munchkin-kitten-gif-15917800", "https://tenor.com/view/mybc-gif-24798373", "https://tenor.com/view/cat-cats-cat-love-cat-kiss-kiss-gif-24653113"]
     await ctx.channel.send(random.choice(Cats))
-
-@bot.command()
-async def lyrics(ctx):
-    a = input('Enter an artist`s name: (ex: Radiohead)')
-    a
-    s = input('Enter a song by this artist: (Weird Fishes/Arpeggi)')
-    s
-    lyrics = api.search_song(ctx, artist.name).lyrics
-    print(lyrics)    
-
-    await ctx.reply(f' """"{lyrics}"""  ')
-    
-
     
 #Test
 @bot.command(name="test", help="Tests the bot's response")
