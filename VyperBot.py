@@ -69,16 +69,16 @@ async def on_message(message):
          await message.channel.send(response)
     
     #If "cum" in any spelling is detected
-    if Cum in message.content:
+    if any(n in message.content for n in Cum):
         await message.reply("Haha you said cum!", mention_author=True)
         
     #If swears/slurs in any spelling are detected
-    if Naughty_Words in message.content:
-        await message.channel.purge(limit=1)
-        await message.reply("You said a naughty word! We don't do that here", mention_author=True)
+    #if any(n in message.content for n in Naughty_Words):
+        #await message.channel.purge(limit=1)
+        #await message.reply("You said a naughty word! We don't do that here", mention_author=True)
         
     #If "pog" in any spelling is detected
-    if Pog in message.content:
+    if any(n in message.content for n in Pog):
         await message.reply("POG!" + random.choice(POG), mention_author=True)
          
     #Log when a user messages
@@ -121,5 +121,5 @@ async def cat(ctx):
 async def test(ctx):
     response = "Good Command Test!"
     await ctx.send(response)
-    
+
 bot.run(TOKEN)
