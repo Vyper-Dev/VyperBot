@@ -1,9 +1,11 @@
 import discord
 import random
 import sys
+import os
 from discord.ext import commands
 
-TOKEN = "OTQ5NDcyNzUwNjU1OTA1ODIy.GvG8E8.CFZBBP-IBQDd4YTYHcZ6XzsHrPnj8GN6UYRyvA"
+f = open("Key.txt", 'r')
+TOKEN = str(f.readline())
 client = discord.Client()
 bot = commands.Bot(command_prefix='!', intents = discord.Intents.all())
 
@@ -64,7 +66,7 @@ async def on_message(message):
          return
     
     #To test if text recognition is working
-    if message.content == 'Test':
+    if message.content == 'TEST':
          response = "Good Test!"
          await message.channel.send(response)
     
@@ -115,6 +117,11 @@ async def close(ctx):
 @bot.command(help="Shows a random gif of a cat")
 async def cat(ctx):
     await ctx.channel.send(random.choice(Cats))
+
+@bot.command()
+async def update():
+    os.system("")
+    
     
 #Test
 @bot.command(name="test", help="Tests the bot's response")
