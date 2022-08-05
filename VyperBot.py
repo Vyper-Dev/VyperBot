@@ -42,7 +42,6 @@ Naughty_Words = [Fuck, Shit, Bitch]
 
 #gifs and etc
 Cats = ["https://tenor.com/view/meme-cat-gif-23774444", "https://tenor.com/view/cute-kitty-best-kitty-alex-cute-pp-kitty-omg-yay-cute-kitty-munchkin-kitten-gif-15917800", "https://tenor.com/view/mybc-gif-24798373", "https://tenor.com/view/cat-cats-cat-love-cat-kiss-kiss-gif-24653113"]
-POG = []
 
 #Logging Users
 @bot.event
