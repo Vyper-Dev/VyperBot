@@ -81,7 +81,7 @@ async def on_message(message):
         
     #If "pog" in any spelling is detected
     if any(n in message.content for n in Pog):
-        await message.reply("POG!" + random.choice(POG), mention_author=True)
+        await message.reply("POG!", mention_author=True)
          
     #Log when a user messages
     Message = f'{message.author} sent: "{message.content}" in guild: [{message.guild}]'
