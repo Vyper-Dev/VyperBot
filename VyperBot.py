@@ -4,7 +4,7 @@ import sys
 import os
 from discord.ext import commands
 
-f = open("Key.txt", 'r')
+f = open(os.path.join(sys.path[0],"Key.txt"), 'r')
 TOKEN = str(f.readline())
 client = discord.Client()
 bot = commands.Bot(command_prefix='!', intents = discord.Intents.all())
@@ -119,11 +119,11 @@ async def cat(ctx):
     await ctx.channel.send(random.choice(Cats))
 
 @bot.command()
-async def update():
+async def update(ctx):
     os.system("git clone https://githb.com/Vyper-Dev/VyperBot.git")
     os.system("terminal -e sleep 10 && python /home/vyper/Downloads/VyperBot/VyperBot.py")
+    await ctx.reply("Update Succeeded. Restarting now", mention_author=True)
     sys.exit()
-
     
 #Test
 @bot.command(name="test", help="Tests the bot's response")
