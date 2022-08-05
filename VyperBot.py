@@ -123,7 +123,7 @@ async def update(ctx):
     os.system("git clone https://githb.com/Vyper-Dev/VyperBot.git")
     os.system("python /home/vyper/Downloads/VyperBot/VyperBot.py")
     await ctx.reply("Update Succeeded. Restarting now", mention_author=True)
-    sys.exit()
+    #sys.exit()
     
 #Test
 @bot.command(name="test", help="Tests the bot's response")
