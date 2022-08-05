@@ -125,7 +125,7 @@ async def update(ctx):
     sys.exit()
     
 #Test
-@bot.command(name="test", help="Tests the bot's response")
+@bot.command(name="Test", help="Tests the bot's response")
 async def Test(ctx):
     response = "Good Command Test!"
     await ctx.send(response)
