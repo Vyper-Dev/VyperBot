@@ -120,8 +120,10 @@ async def cat(ctx):
 
 @bot.command()
 async def update():
-    os.system("")
-    
+    os.system("git clone https://githb.com/Vyper-Dev/VyperBot.git")
+    os.system("sleep 10 && python /home/vyper/Downloads/VyperBot/VyperBot.py")
+    sys.exit()
+
     
 #Test
 @bot.command(name="test", help="Tests the bot's response")
