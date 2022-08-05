@@ -121,7 +121,7 @@ async def cat(ctx):
 @bot.command()
 async def update(ctx):
     os.system("git clone https://githb.com/Vyper-Dev/VyperBot.git")
-    os.system("terminal -e sleep 10 && python /home/vyper/Downloads/VyperBot/VyperBot.py")
+    os.system("python /home/vyper/Downloads/VyperBot/VyperBot.py")
     await ctx.reply("Update Succeeded. Restarting now", mention_author=True)
     sys.exit()
     
