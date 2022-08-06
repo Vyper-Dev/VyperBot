@@ -4,7 +4,7 @@ import sys
 import os
 from discord.ext import commands
 
-f = open("Key.txt", 'r')
+f = open(os.path.join(sys.path[0],"Key.txt"), 'r')
 TOKEN = str(f.readline())
 client = discord.Client()
 bot = commands.Bot(command_prefix='!', intents = discord.Intents.all())
@@ -42,7 +42,6 @@ Naughty_Words = [Fuck, Shit, Bitch]
 
 #gifs and etc
 Cats = ["https://tenor.com/view/meme-cat-gif-23774444", "https://tenor.com/view/cute-kitty-best-kitty-alex-cute-pp-kitty-omg-yay-cute-kitty-munchkin-kitten-gif-15917800", "https://tenor.com/view/mybc-gif-24798373", "https://tenor.com/view/cat-cats-cat-love-cat-kiss-kiss-gif-24653113"]
-POG = []
 
 #Logging Users
 @bot.event
@@ -81,7 +80,7 @@ async def on_message(message):
         
     #If "pog" in any spelling is detected
     if any(n in message.content for n in Pog):
-        await message.reply("POG!" + random.choice(POG), mention_author=True)
+        await message.reply("POG!", mention_author=True)
          
     #Log when a user messages
     Message = f'{message.author} sent: "{message.content}" in guild: [{message.guild}]'
@@ -119,15 +118,15 @@ async def cat(ctx):
     await ctx.channel.send(random.choice(Cats))
 
 @bot.command()
-async def update():
-    os.system("git clone https://githb.com/Vyper-Dev/VyperBot.git")
-    os.system("terminal -e sleep 10 && python /home/vyper/Downloads/VyperBot/VyperBot.py")
+async def update(ctx):
+    os.system("git pull https://githb.com/Vyper-Dev/VyperBot.git")
+    #os.system("python /home/vyper/Downloads/VyperBot/VyperBot.py")
+    await ctx.reply("Update Succeeded. Restarting now", mention_author=True)
     sys.exit()
-
     
 #Test
-@bot.command(name="test", help="Tests the bot's response")
-async def test(ctx):
+@bot.command(name="Test", help="Tests the bot's response")
+async def Test(ctx):
     response = "Good Command Test!"
     await ctx.send(response)
 
