@@ -8,12 +8,13 @@ import Bot
 global Restart
 global Close
 global Run
-Restart = False
+Restart = True
 Close = False
 Run = True
 
 def update():
-    os.system("git pull https://githb.com/Vyper-Dev/VyperBot.git")
+    #os.system("git pull https://githb.com/Vyper-Dev/VyperBot.git")
+    os.system("tmux new python /home/vyper/VyperBot/VyperBot.py")
 
 while Run:
     print("Run: " + str(Run))
@@ -28,4 +29,4 @@ while Run:
     if Close == True:
         sys.exit()
     
-    Bot.RunBot()
+    #Bot.RunBot()
