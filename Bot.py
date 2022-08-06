@@ -127,16 +127,12 @@ def RunBot():
             await ctx.reply("Update Succeeded. Restarting now", mention_author=True)
             Restart = True
             #quit()
-            break
 
         #Test
         @bot.command(name="test", help="Tests the bot's response")
         async def test(ctx):
             response = "Good Command Test!"
             await ctx.send(response)
-
-        if Restart == True:
-            break
 
         if Restart == False:
             bot.run(TOKEN)

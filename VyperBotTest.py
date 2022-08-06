@@ -3,7 +3,7 @@ import random
 import sys
 import os
 from discord.ext import commands
-import Bot
+#import Bot
 
 global Restart
 global Close
