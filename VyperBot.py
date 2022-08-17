@@ -68,11 +68,11 @@ async def on_message(message):
 	#To test if text recognition is working
 	if message.content == 'TEST':
 		response = "Good Test!"
-		await message.channel.send(response)
+		await message.channel.send("Good Test!")
 		
 	#If "cum" in any spelling is detected
 	if any(n in message.content for n in Cum):
-		await message.reply("Haha you said '" + message.content + "'!", mention_author=True)
+		await message.reply("Haha you said " + message.content + "!", mention_author=True)
 		
 	#If swears/slurs in any spelling are detected
 	#if any(n in message.content for n in Naughty_Words):
@@ -112,6 +112,10 @@ async def cat(ctx):
 @bot.command()
 async def summer(ctx):
 	await ctx.reply("is very " + random.choice(Compliments) + "!", mention_author=True)
+	
+@bot.command()
+async def clout(ctx):
+	await ctx.reply("https://ashtondbl.com/portfolio", mention_author=False)
 	
 @bot.command(help="Shuts down logging and saves the file")
 async def close(ctx):
