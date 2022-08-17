@@ -72,17 +72,13 @@ async def on_message(message):
 		
 	#If "cum" in any spelling is detected
 	if any(n in message.content for n in Cum):
-		await message.reply("Haha you said cum!", mention_author=True)
+		await message.reply("Haha you said '" + message.content + "'!", mention_author=True)
 		
 	#If swears/slurs in any spelling are detected
 	#if any(n in message.content for n in Naughty_Words):
 		#await message.channel.purge(limit=1)
 		#await message.reply("You said a naughty word! We don't do that here", mention_author=True)
-		
-	#If "pog" in any spelling is detected
-	if any(n in message.content for n in Pog):
-		await message.reply("POG!", mention_author=True)
-		
+
 	#Log when a user messages
 	Message = f'{message.author} sent: "{message.content}" in guild: [{message.guild}]'
 	Guild = str(message.guild)
@@ -121,7 +117,7 @@ async def summer(ctx):
 async def close(ctx):
 	await ctx.reply("Log file(s) saved. Shutting down.", mention_author=True)
 	sys.exit()
-
+	
 @bot.command()
 async def update(ctx):
 	os.system("git pull https://githb.com/Vyper-Dev/VyperBot.git")
