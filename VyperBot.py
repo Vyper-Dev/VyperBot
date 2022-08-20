@@ -55,7 +55,7 @@ def LogB(Message):
 #Logging Users
 @bot.event
 async def on_typing(Channel, User, When):
-	Typing = f'{User.displa_name} has started typing in [{Channel.guild}]'
+	Typing = f'{User.display_name} has started typing in [{Channel.guild}]'
 	Guild = str(Channel.guild)
 	
 	#Define server IDs for log files
