@@ -44,10 +44,18 @@ Naughty_Words = [Fuck, Shit, Bitch]
 Cats = ["https://tenor.com/view/meme-cat-gif-23774444", "https://tenor.com/view/cute-kitty-best-kitty-alex-cute-pp-kitty-omg-yay-cute-kitty-munchkin-kitten-gif-15917800", "https://tenor.com/view/mybc-gif-24798373", "https://tenor.com/view/cat-cats-cat-love-cat-kiss-kiss-gif-24653113"]
 Compliments = ["cute", "smart", "funny", "cool", "hot", "awesome", "lovely", "gay"]
 
+def LogA(Message):
+	a.write(Message)
+	a.write("\n")
+
+def LogB(Message):
+	a.write(Message)
+	a.write("\n")
+
 #Logging Users
 @bot.event
 async def on_typing(Channel, User, When):
-	Typing = f'{User.name} has started typing in [{Channel.guild}]'
+	Typing = f'{User.displa_name} has started typing in [{Channel.guild}]'
 	Guild = str(Channel.guild)
 	
 	#Define server IDs for log files
@@ -80,16 +88,17 @@ async def on_message(message):
 		#await message.reply("You said a naughty word! We don't do that here", mention_author=True)
 
 	#Log when a user messages
-	Message = f'{message.author} sent: "{message.content}" in guild: [{message.guild}]'
+	Message = f'{message.author} sent: "{message.content}" in channel: [{message.channel}]'
 	Guild = str(message.guild)
+	LogA(Message)
 	
 	#Define server IDs for log files
-	if "VyperBot's Playground" == Guild:
-		a.write(Message)
-		a.write("\n")
-	if "Ponch" == Guild:
-		b.write(Message)
-		b.write("\n")
+	#if "VyperBot's Playground" == Guild:
+		#a.write(Message)
+		#a.write("\n")
+	#if "Ponch" == Guild:
+		#b.write(Message)
+		#b.write("\n")
 	print(Message)
 	
 	#Process to allow commands after text recognition
