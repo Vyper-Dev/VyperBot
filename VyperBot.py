@@ -30,10 +30,6 @@ async def on_resume():
 #Word Definitions
 Cum = ["cum", "CUM", "Cum", "CUm", "cUM", "cUm", "cuM"]
 Pog = ["pog", "Pog", "POg", "POG", "pOG", "poG", "pOG"]
-Fuck = []
-Shit = []
-Bitch = []
-Naughty_Words = [Fuck, Shit, Bitch]
 
 #gifs and etc
 Cats = ["https://tenor.com/view/meme-cat-gif-23774444", "https://tenor.com/view/cute-kitty-best-kitty-alex-cute-pp-kitty-omg-yay-cute-kitty-munchkin-kitten-gif-15917800", "https://tenor.com/view/mybc-gif-24798373", "https://tenor.com/view/cat-cats-cat-love-cat-kiss-kiss-gif-24653113"]
@@ -66,12 +62,7 @@ async def on_message(message):
 	#If "cum" in any spelling is detected
 	if any(n in message.content for n in Cum):
 		await message.reply("Haha you said " + message.content + "!", mention_author=True)
-		
-	#If swears/slurs in any spelling are detected
-	#if any(n in message.content for n in Naughty_Words):
-		#await message.channel.purge(limit=1)
-		#await message.reply("You said a naughty word! We don't do that here", mention_author=True)
-
+	
 	#Log when a user messages
 	Message = f'{message.author} sent: "{message.content}" in channel: [{message.channel}]'
 	Guild = str(message.guild)
@@ -81,7 +72,8 @@ async def on_message(message):
 	
 	#Process to allow commands after text recognition
 	await bot.process_commands(message)
-	
+
+
 #Log when a message is deleted
 @bot.event
 async def on_message_delete(message):
@@ -120,6 +112,6 @@ async def update(ctx):
 async def test(ctx):
 	response = "Good Command Test!"
 	await ctx.send(response)
-	
-bot.run(TOKEN)
 
+
+bot.run(TOKEN)
