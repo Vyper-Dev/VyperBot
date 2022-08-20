@@ -10,13 +10,8 @@ client = discord.Client()
 bot = commands.Bot(command_prefix='!', intents = discord.Intents.all())
 
 a = open("Log.txt", "w+")
-a.write("\n")
-a.close()
-a = open("Log.txt", "a")
-b = open("Log2.txt", "w+")
-b.write("\n")
-b.close()
-b = open("Log2.txt", "a")
+#a.write("\n")
+#a.close()
 
 #Startup
 @bot.event
@@ -48,23 +43,13 @@ def LogA(Message):
 	a.write(Message)
 	a.write("\n")
 
-def LogB(Message):
-	a.write(Message)
-	a.write("\n")
-
 #Logging Users
 @bot.event
 async def on_typing(Channel, User, When):
-	Typing = f'{User.display_name} has started typing in [{Channel.name}]'
+	Typing = f'{User.display_name} has started typing in channel: [{Channel.name}]'
 	Guild = str(Channel.guild)
-	
-	#Define server IDs for log files
-	if "VyperBot's Playground" == Guild:
-		a.write(Typing)
-		a.write("\n")
-	if "Ponch" == Guild:
-		b.write(Typing)
-		b.write("\n")
+
+	LogA(Message)
 	print(Typing)
 	
 #Actions based on text recogntion
@@ -90,15 +75,8 @@ async def on_message(message):
 	#Log when a user messages
 	Message = f'{message.author} sent: "{message.content}" in channel: [{message.channel}]'
 	Guild = str(message.guild)
+
 	LogA(Message)
-	
-	#Define server IDs for log files
-	#if "VyperBot's Playground" == Guild:
-		#a.write(Message)
-		#a.write("\n")
-	#if "Ponch" == Guild:
-		#b.write(Message)
-		#b.write("\n")
 	print(Message)
 	
 	#Process to allow commands after text recognition
