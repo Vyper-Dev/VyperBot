@@ -49,7 +49,7 @@ async def on_typing(Channel, User, When):
 	Typing = f'{User.display_name} has started typing in channel: [{Channel.name}]'
 	Guild = str(Channel.guild)
 
-	LogA(Message)
+	LogA(Typing)
 	print(Typing)
 	
 #Actions based on text recogntion
