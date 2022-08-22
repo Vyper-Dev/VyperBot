@@ -20,7 +20,7 @@ def Bot():
 	while True:
 
 		if Break == True:
-			break
+			sys.exit()
 
 		#Startup
 		@bot.event
