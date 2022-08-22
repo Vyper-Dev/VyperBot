@@ -10,8 +10,6 @@ client = discord.Client()
 bot = commands.Bot(command_prefix='!', intents = discord.Intents.all())
 
 a = open("Log.txt", "w+")
-#a.write("\n")
-#a.close()
 
 #Startup
 @bot.event
@@ -114,5 +112,5 @@ async def test(ctx):
 	response = "Good Command Test!"
 	await ctx.send(response)
 
-
+#Run the bot
 bot.run(TOKEN)
