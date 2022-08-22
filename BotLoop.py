@@ -10,6 +10,7 @@ Quit = False
 
 while Run:
 
+    print("Loop")
     if Update == True:
         #tmux create session
         #update code
@@ -18,6 +19,7 @@ while Run:
         print("Update")
     
     if Quit == True:
+        print("Quit")
         sys.exit()
 
     else:
