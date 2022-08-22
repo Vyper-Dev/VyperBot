@@ -83,6 +83,7 @@ async def on_message_delete(message):
 @bot.command(help="Clears all messages in the corrosponding channel")
 async def clear(ctx, amount=5):
 	await ctx.channel.purge(limit=amount)
+	LogA(f"{ctx} messages deleted")
 	
 @bot.command(help="Shows a random gif of a cat")
 async def cat(ctx):
