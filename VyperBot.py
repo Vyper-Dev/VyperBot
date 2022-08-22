@@ -117,8 +117,8 @@ async def test(ctx):
 	response = "Good Command Test!"
 	await ctx.send(response)
 
-@bot.command(name="work", help="Tests the bot's response x2")
-async def work(ctx):
+@bot.command(name="test2", help="Tests the bot's response x2")
+async def test2(ctx):
 	response = "Good 2nd Command Test!"
 	await ctx.send(response)
 
