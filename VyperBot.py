@@ -110,7 +110,6 @@ def Bot():
 		@bot.command(help="Shuts down logging and saves the file")
 		async def close(ctx):
 			await ctx.reply("Log file(s) saved. Shutting down.", mention_author=True)
-			break
 			#sys.exit()
 			
 		@bot.command()
@@ -124,8 +123,12 @@ def Bot():
 		#Test
 		@bot.command(name="test", help="Tests the bot's response")
 		async def test(ctx):
+			i += 1
+			print(i)
 			response = "Good Command Test!"
 			await ctx.send(response)
+		
+
 
 		#Run the bot
 		bot.run(TOKEN)
