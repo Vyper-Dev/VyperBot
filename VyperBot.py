@@ -112,7 +112,7 @@ def Bot():
 			BotLoop.Quit == True
 			Break == True
 			await ctx.reply("Log file(s) saved. Shutting down.", mention_author=True)
-			#sys.exit()
+			sys.exit()
 			
 		@bot.command()
 		async def update(ctx):
