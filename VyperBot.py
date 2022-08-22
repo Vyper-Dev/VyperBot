@@ -109,7 +109,7 @@ async def close(ctx):
 async def update(ctx):
 	a.close()
 	await ctx.reply("Update Started. Please wait 15 seconds", mention_author=True)
-	os.system("tmux new-session -d -s Bridge \; send-keys 'python /home/vyper/Bridge.py' Enter ")
+	os.system("tmux new-session -d -s Bridge")
 	os.system("tmux send-keys -t Bridge 'python /home/vyper/Bridge.py' Enter")
 	sys.exit()
 	
