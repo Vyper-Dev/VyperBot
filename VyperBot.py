@@ -12,6 +12,7 @@ bot = commands.Bot(command_prefix='!', intents = discord.Intents.all())
 
 global Break
 Break = False
+global i
 i = 0
 
 a = open("Log.txt", "w+")
