@@ -36,7 +36,7 @@ Cum = ["cum", "CUM", "Cum", "CUm", "cUM", "cUm", "cuM"]
 Pog = ["pog", "Pog", "POg", "POG", "pOG", "poG", "pOG"]
 
 #gifs and etc
-Cats = ["https://tenor.com/view/meme-cat-gif-23774444", "https://tenor.com/view/cute-kitty-best-kitty-alex-cute-pp-kitty-omg-yay-cute-kitty-munchkin-kitten-gif-15917800", "https://tenor.com/view/mybc-gif-24798373", "https://tenor.com/view/cat-cats-cat-love-cat-kiss-kiss-gif-24653113"]
+Cats = ["https://tenor.com/view/meme-cat-gif-23774444", "https://tenor.com/view/cute-kitty-best-kitty-alex-cute-pp-kitty-omg-yay-cute-kitty-munchkin-kitten-gif-15917800", "https://tenor.com/view/mybc-gif-24798373", "https://tenor.com/view/cat-cats-cat-love-cat-kiss-kiss-gif-24653113" , "https://tenor.com/view/cat-the-cat-he-dance-he-dance-gif-24077288", "https://tenor.com/view/cat-dancing-meme-dancing-cat-white-cat-meme-gif-24092585"]
 Compliments = ["cute", "smart", "funny", "cool", "hot", "awesome", "lovely", "gay"]
 
 def LogA(Message):
@@ -110,7 +110,7 @@ async def close(ctx):
 @bot.command()
 async def update(ctx):
 	a.close()
-	await ctx.reply("Update Started. Please wait 15 seconds", mention_author=True)
+	await ctx.reply("Update Started. Please wait for my message in #bot-orgy", mention_author=True)
 	os.system("tmux new-session -d -s Bridge")
 	os.system("tmux send-keys -t Bridge 'python /home/vyper/Bridge.py' Enter")
 	sys.exit()
