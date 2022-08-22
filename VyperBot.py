@@ -109,9 +109,8 @@ def Bot():
 			
 		@bot.command(help="Shuts down logging and saves the file")
 		async def close(ctx):
-			BotLoop.Quit == True
-			Break == True
 			await ctx.reply("Log file(s) saved. Shutting down.", mention_author=True)
+			break
 			#sys.exit()
 			
 		@bot.command()
@@ -127,9 +126,6 @@ def Bot():
 		async def test(ctx):
 			response = "Good Command Test!"
 			await ctx.send(response)
-		
-		if Break == True:
-			break
 
 		#Run the bot
 		bot.run(TOKEN)
