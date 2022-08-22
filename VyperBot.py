@@ -84,7 +84,7 @@ def Bot():
 		
 	#Commands
 	@bot.command(help="Clears all messages in the corrosponding channel")
-	async def close(ctx, amount=5):
+	async def clear(ctx, amount=5):
 		await ctx.channel.purge(limit=amount)
 		LogA(f"{ctx} messages deleted")
 		
