@@ -99,13 +99,16 @@ async def clout(ctx):
 	
 @bot.command(help="Shuts down logging and saves the file")
 async def close(ctx):
+	a.close()
 	await ctx.reply("Log file(s) saved. Shutting down.", mention_author=True)
 	sys.exit()
 	
 @bot.command()
 async def update(ctx):
+	a.close()
+	os.system("tmux kill-session -t 0")
 	os.system("tmux new-session -d \; send-keys 'python /home/vyper/StartBot.py' Enter")
-	await ctx.reply("Update Started. Please connect to view the console.", mention_author=True)
+	await ctx.reply("Update Started", mention_author=True)
 	sys.exit()
 	
 #Test
