@@ -107,7 +107,7 @@ def Bot():
 		async def close(ctx):
 			await ctx.reply("Log file(s) saved. Shutting down.", mention_author=True)
 			#sys.exit()
-			Close = True
+			Quit = True
 			Break = True
 			
 		@bot.command()
