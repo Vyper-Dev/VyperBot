@@ -3,12 +3,14 @@ import random
 import sys
 import os
 from discord.ext import commands
+import BotLoop
 
 f = open(os.path.join(sys.path[0],"Key.txt"), 'r')
 TOKEN = str(f.readline())
 client = discord.Client()
 bot = commands.Bot(command_prefix='!', intents = discord.Intents.all())
 
+global Break
 Break = False
 
 a = open("Log.txt", "w+")
@@ -107,16 +109,16 @@ def Bot():
 		async def close(ctx):
 			await ctx.reply("Log file(s) saved. Shutting down.", mention_author=True)
 			#sys.exit()
-			Quit = True
-			Break = True
+			BotLoop.Quit == True
+			Break == True
 			
 		@bot.command()
 		async def update(ctx):
 			os.system("git pull https://githb.com/Vyper-Dev/VyperBot.git")
 			await ctx.reply("Update Started. Please connect to view the console.", mention_author=True)
 			#sys.exit()
-			Update = True
-			Break = True
+			BotLoop.Update = True
+			Break == True
 			
 		#Test
 		@bot.command(name="test", help="Tests the bot's response")
