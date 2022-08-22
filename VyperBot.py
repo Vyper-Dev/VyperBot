@@ -106,7 +106,7 @@ async def close(ctx):
 @bot.command()
 async def update(ctx):
 	a.close()
-	await ctx.reply("Update Started", mention_author=True)
+	await ctx.reply("Update Started. Please wait 15 seconds", mention_author=True)
 	os.system("tmux kill-session -t 0 \; new-session -d \; send-keys 'python /home/vyper/StartBot.py' Enter")
 	#os.system("tmux new-session -d \; send-keys 'python /home/vyper/StartBot.py' Enter")
 	sys.exit()
@@ -115,11 +115,6 @@ async def update(ctx):
 @bot.command(name="test", help="Tests the bot's response")
 async def test(ctx):
 	response = "Good Command Test!"
-	await ctx.send(response)
-
-@bot.command(name="test2", help="Tests the bot's response x2")
-async def test2(ctx):
-	response = "Good 2nd Command Test!"
 	await ctx.send(response)
 
 #Run the bot
