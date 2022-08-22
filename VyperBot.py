@@ -115,8 +115,6 @@ def Bot():
 	#Test
 	@bot.command(name="test", help="Tests the bot's response")
 	async def test(ctx):
-		i += 1
-		print(i)
 		response = "Good Command Test!"
 		await ctx.send(response)
 
