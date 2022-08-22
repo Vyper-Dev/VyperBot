@@ -104,7 +104,7 @@ async def close(ctx):
 	
 @bot.command()
 async def update(ctx):
-	os.system("tmux new python /home/vyper/VyperBot/StartBot.py")
+	os.system("tmux new-session -d \; send-keys 'python /home/vyper/VyperBot/StartBot.py' Enter")
 	await ctx.reply("Update Started. Please connect to view the console.", mention_author=True)
 	sys.exit()
 	
