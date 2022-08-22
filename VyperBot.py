@@ -119,6 +119,5 @@ async def test2(ctx):
 	response = "Good 2nd Command Test!"
 	await ctx.send(response)
 
-
 #Run the bot
 bot.run(TOKEN)
