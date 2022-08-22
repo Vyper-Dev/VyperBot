@@ -20,6 +20,7 @@ a = open("Log.txt", "w+")
 def Bot():
 	import BotLoop
 	while True:
+		global i
 
 		print("Loop 2")
 		if Break == True:
