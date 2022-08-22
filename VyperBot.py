@@ -12,6 +12,7 @@ bot = commands.Bot(command_prefix='!', intents = discord.Intents.all())
 
 global Break
 Break = False
+i = 0
 
 a = open("Log.txt", "w+")
 
@@ -127,8 +128,6 @@ def Bot():
 			print(i)
 			response = "Good Command Test!"
 			await ctx.send(response)
-		
-
 
 		#Run the bot
 		bot.run(TOKEN)
