@@ -106,9 +106,9 @@ async def close(ctx):
 @bot.command()
 async def update(ctx):
 	a.close()
-	os.system("tmux kill-session -t 0")
-	os.system("tmux new-session -d \; send-keys 'python /home/vyper/StartBot.py' Enter")
 	await ctx.reply("Update Started", mention_author=True)
+	os.system("tmux kill-session -t 0 \; new-session -d \; send-keys 'python /home/vyper/StartBot.py' Enter")
+	#os.system("tmux new-session -d \; send-keys 'python /home/vyper/StartBot.py' Enter")
 	sys.exit()
 	
 #Test
