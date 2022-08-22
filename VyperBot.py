@@ -120,3 +120,5 @@ def Bot():
 
 	#Run the bot
 	bot.run(TOKEN)
+
+	print(BotLoop.Update)
