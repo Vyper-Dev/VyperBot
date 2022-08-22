@@ -127,6 +127,9 @@ def Bot():
 		async def test(ctx):
 			response = "Good Command Test!"
 			await ctx.send(response)
+		
+		if Break == True:
+			break
 
 		#Run the bot
 		bot.run(TOKEN)
