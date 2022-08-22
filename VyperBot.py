@@ -103,7 +103,8 @@ def Bot():
 	@bot.command(help="Shuts down logging and saves the file")
 	async def close(ctx):
 		await ctx.reply("Log file(s) saved. Shutting down.", mention_author=True)
-		sys.exit()
+		#sys.exit()
+		bot.close()
 		
 	@bot.command()
 	async def update(ctx):
