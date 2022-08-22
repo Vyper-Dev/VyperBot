@@ -4,5 +4,5 @@ import time
 
 time.sleep(2)
 
-os.system("tmux new git pull https://github.com/Vyper-Dev/VyperBot.git")
-os.system("tmux new-session 'python /home/vyper/VyperBot/BotLoop.py'")
+os.system("tmux new-session \; send-keys 'git pull https://github.com/Vyper-Dev/VyperBot.git' Enter")
+os.system("tmux new-session \; send-keys 'python /home/vyper/VyperBot/BotLoop.py' Enter")
