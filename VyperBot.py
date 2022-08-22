@@ -3,7 +3,6 @@ import random
 import sys
 import os
 from discord.ext import commands
-#import BotLoop
 
 f = open(os.path.join(sys.path[0],"Key.txt"), 'r')
 TOKEN = str(f.readline())
@@ -119,6 +118,5 @@ def Bot():
 		await ctx.send(response)
 
 	#Run the bot
-	bot.run(TOKEN)
-
 	print(BotLoop.Update)
+	bot.run(TOKEN)
