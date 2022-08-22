@@ -22,6 +22,8 @@ async def on_connect():
 @bot.event
 async def on_ready():
 	print(f'{bot.user} has has been successfully setup')
+	channel = bot.get_channel(1011141496554143754)
+	await channel.send("I'm alive!")
 @bot.event
 async def on_disconnect():
 	print(f'{bot.user} has disconnected from Discord')
@@ -118,12 +120,6 @@ async def update(ctx):
 async def test(ctx):
 	response = "Good Command Test!"
 	await ctx.send(response)
-
-@bot.command(name="test2", help="Tests the bot's response")
-async def test2(ctx):
-	response = "Good Command Test 2!"
-	await ctx.send(response)
-
 
 #Run the bot
 bot.run(TOKEN)
