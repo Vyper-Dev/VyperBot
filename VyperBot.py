@@ -108,7 +108,7 @@ async def update(ctx):
 	a.close()
 	await ctx.reply("Update Started. Please wait 15 seconds", mention_author=True)
 	#os.system("python /home/vyper/StartBot.py")
-	os.system("tmux kill-session -t Bot && python /home/vyper/StartBot.py")
+	os.system("python /home/vyper/StartBot.py && tmux kill-session -t Bot ")
 	sys.exit()
 	
 #Test
