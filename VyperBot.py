@@ -19,6 +19,7 @@ def Bot():
 	import BotLoop
 	while True:
 
+		print("Loop 2")
 		if Break == True:
 			print("Break")
 			sys.exit()
@@ -82,7 +83,6 @@ def Bot():
 			
 			#Process to allow commands after text recognition
 			await bot.process_commands(message)
-
 
 		#Log when a message is deleted
 		@bot.event
