@@ -108,18 +108,18 @@ def Bot():
 			
 		@bot.command(help="Shuts down logging and saves the file")
 		async def close(ctx):
-			await ctx.reply("Log file(s) saved. Shutting down.", mention_author=True)
-			#sys.exit()
 			BotLoop.Quit == True
 			Break == True
+			await ctx.reply("Log file(s) saved. Shutting down.", mention_author=True)
+			#sys.exit()
 			
 		@bot.command()
 		async def update(ctx):
+			BotLoop.Update = True
+			Break == True
 			os.system("git pull https://githb.com/Vyper-Dev/VyperBot.git")
 			await ctx.reply("Update Started. Please connect to view the console.", mention_author=True)
 			#sys.exit()
-			BotLoop.Update = True
-			Break == True
 			
 		#Test
 		@bot.command(name="test", help="Tests the bot's response")
