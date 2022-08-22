@@ -101,6 +101,7 @@ async def clout(ctx):
 async def close(ctx):
 	a.close()
 	await ctx.reply("Log file(s) saved. Shutting down.", mention_author=True)
+	os.system("tmux kill-session -t Bot")
 	sys.exit()
 	
 @bot.command()
