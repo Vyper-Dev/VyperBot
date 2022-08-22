@@ -20,6 +20,7 @@ def Bot():
 	while True:
 
 		if Break == True:
+			print("Break")
 			sys.exit()
 
 		#Startup
