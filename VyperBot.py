@@ -9,10 +9,15 @@ TOKEN = str(f.readline())
 client = discord.Client()
 bot = commands.Bot(command_prefix='!', intents = discord.Intents.all())
 
+Break = False
+
 a = open("Log.txt", "w+")
 
 def Bot():
 	while True:
+
+		if Break == True:
+			break
 
 		#Startup
 		@bot.event
@@ -103,7 +108,7 @@ def Bot():
 			await ctx.reply("Log file(s) saved. Shutting down.", mention_author=True)
 			#sys.exit()
 			Close = True
-			break
+			Break = True
 			
 		@bot.command()
 		async def update(ctx):
@@ -111,7 +116,7 @@ def Bot():
 			await ctx.reply("Update Started. Please connect to view the console.", mention_author=True)
 			#sys.exit()
 			Update = True
-			break
+			Break = True
 			
 		#Test
 		@bot.command(name="test", help="Tests the bot's response")
