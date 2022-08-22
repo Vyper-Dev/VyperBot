@@ -13,6 +13,7 @@ global Break
 Break = False
 
 a = open("Log.txt", "w+")
+os.system("tmux kill-session -t Bridge")
 
 #Startup
 @bot.event
