@@ -103,14 +103,13 @@ def Bot():
 	@bot.command(help="Shuts down logging and saves the file")
 	async def close(ctx):
 		await ctx.reply("Log file(s) saved. Shutting down.", mention_author=True)
-		#sys.exit()
-		await ctx.bot.logout()
+		sys.exit()
 		
 	@bot.command()
 	async def update(ctx):
-		os.system("git pull https://githb.com/Vyper-Dev/VyperBot.git")
+		os.system("tmux new python /home/vyper/VyperBot/StartBot.py")
 		await ctx.reply("Update Started. Please connect to view the console.", mention_author=True)
-		#sys.exit()
+		sys.exit()
 		
 	#Test
 	@bot.command(name="test", help="Tests the bot's response")
