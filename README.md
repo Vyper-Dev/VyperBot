@@ -1,4 +1,4 @@
-# VyperBot- Custom Discord bot
+# VyperBot - Custom Discord bot
 
 Features:
 
