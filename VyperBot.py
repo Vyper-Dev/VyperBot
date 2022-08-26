@@ -65,7 +65,7 @@ async def on_message(message):
 		
 	#If "cum" in any spelling is detected
 	if any(n in message.content for n in Cum):
-		await message.reply("Haha you said " + message.content + "!", mention_author=True)
+		await message.reply("Haha you said cum!", mention_author=True)
 	
 	#Log when a user messages
 	Message = f'{message.author} sent: "{message.content}" in channel: [{message.channel}]'
