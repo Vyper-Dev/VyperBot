@@ -114,6 +114,12 @@ async def update(ctx):
 	os.system("tmux new-session -d -s Bridge")
 	os.system("tmux send-keys -t Bridge 'python /home/vyper/Bridge.py' Enter")
 	sys.exit()
+
+@bot.command()
+async def log(ctx):
+	b = open("Log.txt", "r")
+	Log = b.readlines()
+	await ctx.reply(Log, mention_author=True)
 	
 #Test
 @bot.command(name="test", help="Tests the bot's response")
