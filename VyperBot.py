@@ -40,8 +40,10 @@ Cats = ["https://tenor.com/view/meme-cat-gif-23774444", "https://tenor.com/view/
 Compliments = ["cute", "smart", "funny", "cool", "hot", "awesome", "lovely", "gay"]
 
 def LogA(Message):
+	a = open("Log.txt", "w+")
 	a.write(Message)
 	a.write("\n")
+	a.close()
 
 #Logging Users
 @bot.event
