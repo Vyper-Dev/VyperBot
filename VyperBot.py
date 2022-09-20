@@ -32,12 +32,12 @@ async def on_resume():
 	print(f'{bot.user} has resumed connection')
 	
 #Word Definitions
-Cum = ["cum", "CUM", "Cum", "CUm", "cUM", "cUm", "cuM"]
+CUM = ["cum", "CUM", "Cum", "CUm", "cUM", "cUm", "cuM"]
 Pog = ["pog", "Pog", "POg", "POG", "pOG", "poG", "pOG"]
 
 #gifs and etc
-Cats = ["https://tenor.com/view/meme-cat-gif-23774444", "https://tenor.com/view/cute-kitty-best-kitty-alex-cute-pp-kitty-omg-yay-cute-kitty-munchkin-kitten-gif-15917800", "https://tenor.com/view/mybc-gif-24798373", "https://tenor.com/view/cat-cats-cat-love-cat-kiss-kiss-gif-24653113" , "https://tenor.com/view/cat-the-cat-he-dance-he-dance-gif-24077288", "https://tenor.com/view/cat-dancing-meme-dancing-cat-white-cat-meme-gif-24092585"]
-Compliments = ["cute", "smart", "funny", "cool", "hot", "awesome", "lovely", "gay"]
+Cats = ["https://tenor.com/view/meme-cat-gif-23774444", "https://tenor.com/view/cute-kitty-best-kitty-alex-cute-pp-kitty-omg-yay-cute-kitty-munchkin-kitten-gif-15917800", "https://tenor.com/view/cat-cats-cat-love-cat-kiss-kiss-gif-24653113" , "https://tenor.com/view/cat-the-cat-he-dance-he-dance-gif-24077288", "https://tenor.com/view/cat-dancing-meme-dancing-cat-white-cat-meme-gif-24092585"]
+Compliments = ["cute", "smart", "funny", "cool", "kinky"]
 
 def LogA(Message):
 	a.write(Message)
@@ -48,7 +48,6 @@ def LogA(Message):
 async def on_typing(Channel, User, When):
 	Typing = f'{User.display_name} has started typing in channel: [{Channel.name}]'
 	Guild = str(Channel.guild)
-
 	LogA(Typing)
 	print(Typing)
 	
@@ -64,13 +63,12 @@ async def on_message(message):
 		await message.channel.send("Good Test!")
 		
 	#If "cum" in any spelling is detected
-	if any(n in message.content for n in Cum):
+	if any(n in message.content for n in CUM):
 		await message.reply("Haha you said cum!", mention_author=True)
 	
 	#Log when a user messages
 	Message = f'{message.author} sent: "{message.content}" in channel: [{message.channel}]'
 	Guild = str(message.guild)
-
 	LogA(Message)
 	print(Message)
 	
@@ -83,24 +81,25 @@ async def on_message_delete(message):
 	print(f'{message.author} deleted: "{message.content}"')
 	
 #Commands
-@bot.command(help="Clears all messages in the corrosponding channel")
+@bot.command()
+async def TEST(ctx):
+	response = "Good Command Test"
+	await ctx.send(response)
+
+@bot.command()
 async def clear(ctx, amount=5):
-	await ctx.channel.purge(limit=amount)
+	await ctx.channel.purge(limit=amount+1)
 	LogA(f"{ctx} messages deleted")
-	
-@bot.command(help="Shows a random gif of a cat")
+
+@bot.command()
 async def cat(ctx):
 	await ctx.channel.send(random.choice(Cats))
-	
+
 @bot.command()
 async def summer(ctx):
 	await ctx.reply("is very " + random.choice(Compliments) + "!", mention_author=True)
 	
 @bot.command()
-async def clout(ctx):
-	await ctx.reply("https://ashtondbl.com/portfolio", mention_author=False)
-	
-@bot.command(help="Shuts down logging and saves the file")
 async def close(ctx):
 	a.close()
 	await ctx.reply("Log file(s) saved. Shutting down.", mention_author=True)
@@ -114,12 +113,6 @@ async def update(ctx):
 	os.system("tmux new-session -d -s Bridge")
 	os.system("tmux send-keys -t Bridge 'python /home/vyper/Bridge.py' Enter")
 	sys.exit()
-	
-#Test
-@bot.command(name="test", help="Tests the bot's response")
-async def test(ctx):
-	response = "Good Command Test!"
-	await ctx.send(response)
 
 #Run the bot
 bot.run(TOKEN)
