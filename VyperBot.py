@@ -101,6 +101,8 @@ async def summer(ctx):
 
 @bot.command()
 async def calc(ctx, num, sign, num2):
+	int(num)
+	int(num2)
 	if sign == "+":
 		await ctx.reply(num + num2)
 	
