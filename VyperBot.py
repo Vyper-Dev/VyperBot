@@ -108,7 +108,7 @@ async def calc(ctx, num, sign, num2):
 	if sign == "-":
 		Total = int(num) - int(num2)
 		await ctx.reply(Total)
-	if sign == "*" or "x":
+	if sign == "*" or sign == "x":
 		Total = int(num) * int(num2)
 		await ctx.reply(Total)
 	if sign == "/":
