@@ -103,8 +103,10 @@ async def summer(ctx):
 async def calc(ctx, num, sign, num2):
 	int(num)
 	int(num2)
+	Total = 0
 	if sign == "+":
-		await ctx.reply(num + num2)
+		Total = num + num2
+		await ctx.reply(Total)
 	
 @bot.command()
 async def close(ctx):
