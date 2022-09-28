@@ -98,6 +98,11 @@ async def cat(ctx):
 @bot.command()
 async def summer(ctx):
 	await ctx.reply("is very " + random.choice(Compliments) + "!", mention_author=True)
+
+@bot.command()
+async def calc(ctx, num, sign, num2):
+	if sign == "+":
+		await ctx.reply(num + num2)
 	
 @bot.command()
 async def close(ctx):
