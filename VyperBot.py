@@ -13,7 +13,7 @@ global Break
 Break = False
 
 a = open("Log.txt", "w+")
-os.system("tmux kill-session -t Bridge")
+#os.system("tmux kill-session -t Bridge")
 
 #Startup
 @bot.event
@@ -101,11 +101,18 @@ async def summer(ctx):
 
 @bot.command()
 async def calc(ctx, num, sign, num2):
-	int(num)
-	int(num2)
 	Total = 0
 	if sign == "+":
-		Total = num + num2
+		Total = int(num) + int(num2)
+		await ctx.reply(Total)
+	if sign == "-":
+		Total = int(num) - int(num2)
+		await ctx.reply(Total)
+	if sign == "*" or "x":
+		Total = int(num) * int(num2)
+		await ctx.reply(Total)
+	if sign == "/":
+		Total = int(num) / int(num2)
 		await ctx.reply(Total)
 	
 @bot.command()
