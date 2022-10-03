@@ -99,6 +99,10 @@ async def cat(ctx):
 async def summer(ctx):
 	await ctx.reply("is very " + random.choice(Compliments) + "!", mention_author=True)
 
+@bot.command("https://github.com/Vyper-Dev/VyperBot", mention_author=False)
+async def code(ctx):
+	await ctx.reply()
+
 @bot.command()
 async def calc(ctx, num, sign, num2):
 	Total = 0
