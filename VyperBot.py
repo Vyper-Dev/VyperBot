@@ -9,11 +9,7 @@ TOKEN = str(f.readline())
 client = discord.Client()
 bot = commands.Bot(command_prefix='!', intents = discord.Intents.all())
 
-global Break
-Break = False
-
 a = open("Log.txt", "w+")
-#os.system("tmux kill-session -t Bridge")
 
 #Startup
 @bot.event
@@ -99,9 +95,9 @@ async def cat(ctx):
 async def summer(ctx):
 	await ctx.reply("is very " + random.choice(Compliments) + "!", mention_author=True)
 
-@bot.command("https://github.com/Vyper-Dev/VyperBot", mention_author=False)
+@bot.command()
 async def code(ctx):
-	await ctx.reply()
+	await ctx.reply("https://github.com/Vyper-Dev/VyperBot", mention_author=False)
 
 @bot.command()
 async def calc(ctx, num, sign, num2):
