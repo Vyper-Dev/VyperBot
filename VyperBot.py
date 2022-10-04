@@ -8,7 +8,6 @@ f = open(os.path.join(sys.path[0],"Key.txt"), 'r')
 TOKEN = str(f.readline())
 client = discord.Client()
 bot = commands.Bot(command_prefix='!', intents = discord.Intents.all())
-
 a = open("Log.txt", "w+")
 
 #Startup
@@ -27,17 +26,13 @@ async def on_disconnect():
 async def on_resume():
 	print(f'{bot.user} has resumed connection')
 	
-#Word Definitions
+#Lists
 CUM = ["cum", "CUM", "Cum", "CUm", "cUM", "cUm", "cuM"]
-Pog = ["pog", "Pog", "POg", "POG", "pOG", "poG", "pOG"]
-
-#gifs and etc
 Cats = ["https://tenor.com/view/meme-cat-gif-23774444", "https://tenor.com/view/cute-kitty-best-kitty-alex-cute-pp-kitty-omg-yay-cute-kitty-munchkin-kitten-gif-15917800", "https://tenor.com/view/cat-cats-cat-love-cat-kiss-kiss-gif-24653113" , "https://tenor.com/view/cat-the-cat-he-dance-he-dance-gif-24077288", "https://tenor.com/view/cat-dancing-meme-dancing-cat-white-cat-meme-gif-24092585"]
 Compliments = ["cute", "smart", "funny", "cool", "kinky"]
 
 def LogA(Message):
-	a.write(Message)
-	a.write("\n")
+	a.write(Message + "\n")
 
 #Logging Users
 @bot.event
@@ -101,7 +96,6 @@ async def code(ctx):
 
 @bot.command()
 async def calc(ctx, num, sign, num2):
-	Total = 0
 	if sign == "+":
 		Total = int(num) + int(num2)
 		await ctx.reply(Total)
