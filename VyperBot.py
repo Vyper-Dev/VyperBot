@@ -95,6 +95,16 @@ async def code(ctx):
 	await ctx.reply("https://github.com/Vyper-Dev/VyperBot", mention_author=False)
 
 @bot.command()
+async def log(ctx):
+	global a
+	a.close()
+	a = open("Log.txt", "r")
+	await ctx.channel.send(a.readlines())
+	a.close()
+	a = open("Log.txt", "a")
+	return a
+
+@bot.command()
 async def calc(ctx, num, sign, num2):
 	if sign == "+":
 		Total = int(num) + int(num2)
