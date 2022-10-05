@@ -3,12 +3,14 @@ import random
 import sys
 import os
 from discord.ext import commands
+from datetime import datetime
 
 f = open(os.path.join(sys.path[0],"Key.txt"), 'r')
 TOKEN = str(f.readline())
 client = discord.Client()
 bot = commands.Bot(command_prefix='!', intents = discord.Intents.all())
-a = open("Log.txt", "w+")
+dt_string = datetime.now().strftime("%m.%d.%y.%H:%M:%S")
+a = open(f"Log-{dt_string}.txt", "w+")
 
 #Startup
 @bot.event
@@ -18,7 +20,7 @@ async def on_connect():
 async def on_ready():
 	print(f'{bot.user} has has been successfully setup')
 	channel = bot.get_channel(1011141496554143754)
-	await channel.send("I'm alive!")
+	#await channel.send("I'm alive!")
 @bot.event
 async def on_disconnect():
 	print(f'{bot.user} has disconnected from Discord')
@@ -99,9 +101,10 @@ async def log(ctx):
 	global a
 	a.close()
 	a = open("Log.txt", "r")
-	await ctx.channel.send(a.readlines())
+	log = str(a.readlines())
+	await ctx.channel.send(f"```{log}```")
 	a.close()
-	a = open("Log.txt", "a")
+	a = open("Log.txt", "a+")
 	return a
 
 @bot.command()
