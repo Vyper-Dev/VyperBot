@@ -10,7 +10,7 @@ TOKEN = str(f.readline())
 client = discord.Client()
 bot = commands.Bot(command_prefix='!', intents = discord.Intents.all())
 dt_string = datetime.now().strftime("%m.%d.%y.%H:%M:%S")
-a = open(f"Log-{dt_string}.txt", "w+")
+a = open(f"Log-{dt_string}.txt", "w")
 
 #Startup
 @bot.event
@@ -20,7 +20,7 @@ async def on_connect():
 async def on_ready():
 	print(f'{bot.user} has has been successfully setup')
 	channel = bot.get_channel(1011141496554143754)
-	#await channel.send("I'm alive!")
+	await channel.send("I'm alive!")
 @bot.event
 async def on_disconnect():
 	print(f'{bot.user} has disconnected from Discord')
