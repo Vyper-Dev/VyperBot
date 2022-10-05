@@ -100,7 +100,7 @@ async def code(ctx):
 async def log(ctx):
 	global a
 	a.close()
-	a = open(f"Log-{dt_string}.txt", "a")
+	a = open(f"Log-{dt_string}.txt", "r")
 	log = str(a.readlines())
 	await ctx.channel.send(f"```{log}```")
 	a.close()
