@@ -5,6 +5,7 @@ import os
 from discord.ext import commands
 from datetime import datetime
 
+#Log-{dt_string}.txt
 f = open(os.path.join(sys.path[0],"Key.txt"), 'r')
 TOKEN = str(f.readline())
 client = discord.Client()
@@ -99,7 +100,8 @@ async def code(ctx):
 
 @bot.command()
 async def log(ctx):
-	if any(Users in ctx.author for Users in AuthorizedUsers):
+	Author = str(ctx.author)
+	if any(element in Author for element in AuthorizedUsers):
 		global a
 		a.close()
 		a = open(f"Log-{dt_string}.txt", "r")
@@ -109,7 +111,7 @@ async def log(ctx):
 		a = open(f"Log-{dt_string}.txt", "a+")
 		return a
 	else:
-		ctx.reply("You are not authorized to use this command.", mention_author=True)
+		await ctx.reply("You are not authorized to use this command", mention_author=True)
 
 @bot.command()
 async def calc(ctx, num, sign, num2):
