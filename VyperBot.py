@@ -115,18 +115,35 @@ async def log(ctx):
 
 @bot.command()
 async def calc(ctx, num, sign, num2):
+	float(num)
+	float(num2)
 	if sign == "+":
-		Total = int(num) + int(num2)
-		await ctx.reply(Total)
+		Total = num + num2
 	if sign == "-":
-		Total = int(num) - int(num2)
-		await ctx.reply(Total)
+		Total = num - num2
 	if sign == "*" or sign == "x":
-		Total = int(num) * int(num2)
-		await ctx.reply(Total)
+		Total = num * num2
 	if sign == "/":
-		Total = int(num) / int(num2)
-		await ctx.reply(Total)
+		Total = num / num2
+	if sign == "**" or sign == "^":
+		Total = num ** num2
+	if sign == "%":
+		Total = num % num2
+	await ctx.reply(Total)
+
+@bot.command()
+async def factors(ctx, num):
+    X = 1
+    Factors = []
+    for i in range(abs(num)):
+        IsFactor = num % X
+        if IsFactor == 0:
+            Factor = num / X
+            Factors.append(int(Factor))
+            X += 1
+        else:
+            X += 1
+    ctx.reply(*Factors, sep=', ')
 	
 @bot.command()
 async def close(ctx):
