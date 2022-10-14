@@ -135,7 +135,7 @@ async def calc(ctx, num, sign, num2):
 async def factors(ctx, num):
     X = 1
     Factors = []
-    for i in range(abs(num)):
+    for i in range(num):
         IsFactor = num % X
         if IsFactor == 0:
             Factor = num / X
