@@ -108,7 +108,7 @@ async def log(ctx):
 		log = str(a.readlines())
 		await ctx.channel.send(f"```{log}```")
 		a.close()
-		a = open(f"Log-{dt_string}.txt", "a+")
+		a = open(f"Log-{dt_string}.txt", "a")
 		return a
 	else:
 		await ctx.reply("You are not authorized to use this command", mention_author=True)
