@@ -115,8 +115,8 @@ async def log(ctx):
 
 @bot.command()
 async def calc(ctx, num, sign, num2):
-	float(num)
-	float(num2)
+	num = float(num)
+	num2 = float(num2)
 	if sign == "+":
 		Total = num + num2
 	if sign == "-":
