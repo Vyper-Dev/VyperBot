@@ -38,7 +38,7 @@ AuthorizedUsers =["./Vyper#2475","summah#4492"]
 
 def Log(Message):
     a.write(Message + "\n")
-    LogChannel.send(f"```{Message}```")
+    #LogChannel.send(f"```{Message}```")
     
 #Logging Users
 @bot.event
