@@ -11,7 +11,7 @@ TOKEN = str(f.readline())
 client = discord.Client()
 bot = commands.Bot(command_prefix='!', intents = discord.Intents.all())
 dt_string = datetime.now().strftime("%m.%d.%y.%H:%M:%S")
-#a = open(f"Log-{dt_string}.txt", "w")
+a = open(f"Log-{dt_string}.txt", "w")
 
 #Startup
 @bot.event
