@@ -11,7 +11,7 @@ TOKEN = str(f.readline())
 client = discord.Client()
 bot = commands.Bot(command_prefix='!', intents = discord.Intents.all())
 dt_string = datetime.now().strftime("%m.%d.%y.%H:%M:%S")
-a = open(f"Log-{dt_string}.txt", "w")
+#a = open(f"Log-{dt_string}.txt", "w")
 
 #Startup
 @bot.event
@@ -114,22 +114,8 @@ async def log(ctx):
         await ctx.reply("You are not authorized to use this command", mention_author=True)
 
 @bot.command()
-async def calc(ctx, num, sign, num2):
-    num = float(num)
-    num2 = float(num2)
-    if sign == "+":
-        Total = num + num2
-    if sign == "-":
-        Total = num - num2
-    if sign == "*" or sign == "x":
-        Total = num * num2
-    if sign == "/":
-        Total = num / num2
-    if sign == "**" or sign == "^":
-        Total = num ** num2
-    if sign == "%":
-        Total = num % num2
-    await ctx.reply(Total)
+async def calc(ctx, calc):
+    await ctx.reply(calc)
 
 @bot.command()
 async def factors(ctx, num):
