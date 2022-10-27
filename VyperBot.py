@@ -12,6 +12,7 @@ client = discord.Client()
 bot = commands.Bot(command_prefix='!', intents = discord.Intents.all())
 dt_string = datetime.now().strftime("%m.%d.%y.%H:%M:%S")
 a = open(f"Log-{dt_string}.txt", "w")
+LogChannel = bot.get_channel(1035198429636341772)
 
 #Startup
 @bot.event
@@ -35,15 +36,16 @@ Cats = ["https://tenor.com/view/meme-cat-gif-23774444", "https://tenor.com/view/
 Compliments = ["cute", "smart", "funny", "cool", "kinky"]
 AuthorizedUsers =["./Vyper#2475","summah#4492"]
 
-def LogA(Message):
+def Log(Message):
     a.write(Message + "\n")
-
+    LogChannel.send(f"```{Message}```")
+    
 #Logging Users
 @bot.event
 async def on_typing(Channel, User, When):
     Typing = f'{User.display_name} has started typing in channel: [{Channel.name}]'
     Guild = str(Channel.guild)
-    LogA(Typing)
+    Log(Typing)
     print(Typing)
     
 #Actions based on text recogntion
@@ -64,7 +66,7 @@ async def on_message(message):
     #Log when a user messages
     Message = f'{message.author} sent: "{message.content}" in channel: [{message.channel}]'
     Guild = str(message.guild)
-    LogA(Message)
+    Log(Message)
     print(Message)
     
     #Process to allow commands after text recognition
@@ -83,8 +85,12 @@ async def TEST(ctx):
 
 @bot.command()
 async def clear(ctx, amount=5):
-    await ctx.channel.purge(limit=amount+1)
-    LogA(f"{ctx} messages deleted")
+    Author = str(ctx.author)
+    if any(element in Author for element in AuthorizedUsers):
+        await ctx.channel.purge(limit=amount+1)
+        Log(f"{ctx} messages deleted")
+    else:
+        await ctx.reply("You are not authorized to use this command", mention_author=True)
 
 @bot.command()
 async def cat(ctx):
@@ -114,8 +120,22 @@ async def log(ctx):
         await ctx.reply("You are not authorized to use this command", mention_author=True)
 
 @bot.command()
-async def calc(ctx, calc):
-    await ctx.reply(calc)
+async def calc(ctx, num, sign, num2):
+    num = float(num)
+    num2 = float(num2)
+    if sign == "+":
+        Total = num + num2
+    if sign == "-":
+        Total = num - num2
+    if sign == "*" or sign == "x":
+        Total = num * num2
+    if sign == "/":
+        Total = num / num2
+    if sign == "**" or sign == "^":
+        Total = num ** num2
+    if sign == "%":
+        Total = num % num2
+    await ctx.reply(Total)
 
 @bot.command()
 async def factors(ctx, num):
@@ -134,18 +154,26 @@ async def factors(ctx, num):
     
 @bot.command()
 async def close(ctx):
-    a.close()
-    await ctx.reply("Log file(s) saved. Shutting down.", mention_author=True)
-    os.system("tmux kill-session -t Bot")
-    sys.exit()
+    Author = str(ctx.author)
+    if any(element in Author for element in AuthorizedUsers):
+        a.close()
+        await ctx.reply("Log file(s) saved. Shutting down.", mention_author=True)
+        os.system("tmux kill-session -t Bot")
+        sys.exit()
+    else:
+        await ctx.reply("You are not authorized to use this command", mention_author=True)
     
 @bot.command()
 async def update(ctx):
-    a.close()
-    await ctx.reply("Update Started. Please wait for my message in #bot-orgy", mention_author=True)
-    os.system("tmux new-session -d -s Bridge")
-    os.system("tmux send-keys -t Bridge 'python /home/vyper/Bridge.py' Enter")
-    sys.exit()
+    Author = str(ctx.author)
+    if any(element in Author for element in AuthorizedUsers):
+        a.close()
+        await ctx.reply("Update Started. Please wait for my message in #bot-orgy", mention_author=True)
+        os.system("tmux new-session -d -s Bridge")
+        os.system("tmux send-keys -t Bridge 'python /home/vyper/Bridge.py' Enter")
+        sys.exit()
+    else:
+        await ctx.reply("You are not authorized to use this command", mention_author=True)
 
 #Run the bot
 bot.run(TOKEN)
