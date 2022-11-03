@@ -150,7 +150,7 @@ async def factors(ctx, num):
             X += 1
         else:
             X += 1
-    await ctx.reply(*Factors, sep=', ')
+    await ctx.reply(*Factors)
     
 @bot.command()
 async def close(ctx):
