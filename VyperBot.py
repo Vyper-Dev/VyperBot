@@ -1,10 +1,10 @@
+from discord.ext import commands
+from datetime import datetime
 import discord
 import random
-import os
-import sys
 import time
-from datetime import datetime
-from discord.ext import commands
+import sys
+import os
 
 #Log-{dt_string}.txt
 f = open(os.path.join(sys.path[0],"Key.txt"), 'r')
