@@ -36,10 +36,9 @@ Cats = ["https://tenor.com/view/meme-cat-gif-23774444", "https://tenor.com/view/
 Compliments = ["cute", "smart", "funny", "cool"]
 AuthorizedUsers =["./Vyper#2475","summah#4492"]
 
+#Logs
 def Log(Message):
     a.write(Message + "\n")
-    
-#Logging Users
 @bot.event
 async def on_typing(Channel, User, When):
     Typing = f'{User.display_name} has started typing in channel: [{Channel.name}]'
@@ -52,7 +51,6 @@ async def on_typing(Channel, User, When):
 async def on_message(message):
     if message.author == bot.user:
         return
-    
     if message.author == "GitHub#0000" and message.channel == "update-handler":
         a.close()
         await UpdateHandler.send("@./Vyper#2475 Looks like you pushed an update, starting it now.")
@@ -60,19 +58,14 @@ async def on_message(message):
         os.system("tmux new-session -d -s Bridge")
         os.system("tmux send-keys -t Bridge 'python /home/vyper/Bridge.py' Enter")
         sys.exit()
-        
-    #To test if text recognition is working
     if message.content == 'TEST':
         response = "Good Test!"
         await message.channel.send("Good Test!")
     
-    #Log when a user messages
     Message = f'{message.author} sent: "{message.content}" in channel: [{message.channel}]'
     Guild = str(message.guild)
     Log(Message)
     print(Message)
-    
-    #Process to allow commands after text recognition
     await bot.process_commands(message)
 
 #Log when a message is deleted
@@ -85,7 +78,6 @@ async def on_message_delete(message):
 async def TEST(ctx):
     response = "Good Command Test"
     await ctx.send(response)
-
 @bot.command()
 async def clear(ctx, amount=5):
     Author = str(ctx.author)
@@ -94,19 +86,15 @@ async def clear(ctx, amount=5):
         Log(f"{ctx} messages deleted")
     else:
         await ctx.reply("You are not authorized to use this command", mention_author=True)
-
 @bot.command()
 async def cat(ctx):
     await ctx.channel.send(random.choice(Cats))
-
 @bot.command()
 async def summer(ctx):
     await ctx.reply("is very " + random.choice(Compliments) + "!", mention_author=True)
-
 @bot.command()
-async def code(ctx):
+async def source(ctx):
     await ctx.reply("https://github.com/Vyper-Dev/VyperBot", mention_author=False)
-
 @bot.command()
 async def log(ctx):
     Author = str(ctx.author)
@@ -121,7 +109,6 @@ async def log(ctx):
         return a
     else:
         await ctx.reply("You are not authorized to use this command", mention_author=True)
-
 @bot.command()
 async def calc(ctx, num, sign, num2):
     num = float(num)
@@ -139,7 +126,6 @@ async def calc(ctx, num, sign, num2):
     if sign == "%":
         Total = num % num2
     await ctx.reply(Total)
-
 @bot.command()
 async def factors(ctx, num):
     X = 1
@@ -154,7 +140,8 @@ async def factors(ctx, num):
         else:
             X += 1
     await ctx.reply(Factors)
-    
+
+#Utilities
 @bot.command()
 async def close(ctx):
     Author = str(ctx.author)
@@ -165,7 +152,6 @@ async def close(ctx):
         sys.exit()
     else:
         await ctx.reply("You are not authorized to use this command", mention_author=True)
-    
 @bot.command()
 async def update(ctx):
     Author = str(ctx.author)
