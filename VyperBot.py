@@ -1,10 +1,10 @@
 import discord
 import random
-import time
-import sys
 import os
-from discord.ext import commands
+import sys
+import time
 from datetime import datetime
+from discord.ext import commands
 
 #Log-{dt_string}.txt
 f = open(os.path.join(sys.path[0],"Key.txt"), 'r')
@@ -50,7 +50,9 @@ async def on_typing(Channel, User, When):
 async def on_message(message):
     if message.author == bot.user:
         return
-    if message.author == "GitHub#0000" and message.channel == "update-handler":
+    Author = message.author
+    Channel = message.channel
+    if Author == "GitHub#0000" and Channel == "update-handler":
         a.close()
         UpdateHandler = bot.get_channel(1027246218138624000)
         await UpdateHandler.send("@./Vyper#2475 Looks like you pushed an update, starting it now.")
