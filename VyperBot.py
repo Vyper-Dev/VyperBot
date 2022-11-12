@@ -13,7 +13,6 @@ client = discord.Client()
 bot = commands.Bot(command_prefix='!', intents = discord.Intents.all())
 dt_string = datetime.now().strftime("%m.%d.%y.%H:%M:%S")
 a = open(f"Log-{dt_string}.txt", "w")
-UpdateHandler = bot.get_channel(1027246218138624000)
 
 #Startup
 @bot.event
@@ -53,6 +52,7 @@ async def on_message(message):
         return
     if message.author == "GitHub#0000" and message.channel == "update-handler":
         a.close()
+        UpdateHandler = bot.get_channel(1027246218138624000)
         await UpdateHandler.send("@./Vyper#2475 Looks like you pushed an update, starting it now.")
         time.sleep(3)
         os.system("tmux new-session -d -s Bridge")
