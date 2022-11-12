@@ -54,8 +54,8 @@ async def on_message(message):
     Channel = message.channel
     if Author == "GitHub#0000" and Channel == "update-handler":
         a.close()
-        UpdateHandler = bot.get_channel(1027246218138624000)
-        await UpdateHandler.send("@./Vyper#2475 Looks like you pushed an update, starting it now.")
+        channel = bot.get_channel(1040844611754676294)
+        await channel.send("@./Vyper#2475 Looks like you pushed an update, starting it now.")
         time.sleep(3)
         os.system("tmux new-session -d -s Bridge")
         os.system("tmux send-keys -t Bridge 'python /home/vyper/Bridge.py' Enter")
