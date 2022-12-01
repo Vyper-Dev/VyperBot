@@ -13,6 +13,8 @@ client = discord.Client()
 bot = commands.Bot(command_prefix='!', intents = discord.Intents.all())
 dt_string = datetime.now().strftime("%m.%d.%y.%H:%M:%S")
 a = open(f"Log-{dt_string}.txt", "w")
+sys.path.insert(1, '/home/vyper/Block_Encryption')
+import Encryption_Bot
 
 #Startup
 @bot.event
@@ -149,6 +151,13 @@ async def close(ctx):
     Author = str(ctx.author)
     if any(element in Author for element in AuthorizedUsers):
         a.close()
+        ec = []
+        Name = f"Log-{dt_string}.txt"
+        Encryption_Bot.ReadFile(Name)
+        Encryption_Bot.OpenKey('Random_Characters.txt')
+        Encryption_Bot.Sort(Encryption_Bot.ec)
+        Encryption_Bot.Encrypt(Encryption_Bot.S1,Encryption_Bot.S2,Encryption_Bot.S3)
+        Encryption_Bot.Save(Name)
         await ctx.reply("Log file(s) saved. Shutting down.", mention_author=True)
         os.system("tmux kill-session -t Bot")
         sys.exit()
@@ -159,6 +168,13 @@ async def update(ctx):
     Author = str(ctx.author)
     if any(element in Author for element in AuthorizedUsers):
         a.close()
+        ec = []
+        Name = f"Log-{dt_string}.txt"
+        Encryption_Bot.ReadFile(Name)
+        Encryption_Bot.OpenKey('Random_Characters.txt')
+        Encryption_Bot.Sort(Encryption_Bot.ec)
+        Encryption_Bot.Encrypt(Encryption_Bot.S1,Encryption_Bot.S2,Encryption_Bot.S3)
+        Encryption_Bot.Save(Name)
         await ctx.reply("Update Started. Please wait for my message in #bot-orgy", mention_author=True)
         os.system("tmux new-session -d -s Bridge")
         os.system("tmux send-keys -t Bridge 'python /home/vyper/Bridge.py' Enter")
