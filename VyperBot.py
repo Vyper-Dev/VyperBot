@@ -177,7 +177,7 @@ async def update(ctx):
         Encryption_Bot.Save(Name)
         await ctx.reply("Update Started. Please wait for my message in #bot-orgy", mention_author=True)
         os.system("tmux new-session -d -s Bridge")
-        os.system("tmux send-keys -t Bridge 'python /home/vyper/Bridge.py' Enter")
+        os.system("tmux send-keys -t Bridge 'python /home/vyper/VyperBot/Bridge.py' Enter")
         sys.exit()
     else:
         await ctx.reply("You are not authorized to use this command", mention_author=True)
