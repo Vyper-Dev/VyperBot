@@ -9,8 +9,9 @@ import os
 #Log-{dt_string}.txt
 f = open(os.path.join(sys.path[0],"Key.txt"), 'r')
 TOKEN = str(f.readline())
-client = discord.Client()
-bot = commands.Bot(command_prefix='!', intents = discord.Intents.all())
+intents = discord.Intents.all()
+client = discord.Client(intents=intents)
+bot = commands.Bot(command_prefix='!', intents=intents)
 dt_string = datetime.now().strftime("%m.%d.%y.%H:%M:%S")
 a = open(f"Log-{dt_string}.txt", "w")
 sys.path.insert(1, '/home/vyper/Block_Encryption')
