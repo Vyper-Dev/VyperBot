@@ -12,4 +12,4 @@ time.sleep(10)
 
 os.system("cd")
 
-os.system("python /home/vyper/VyperBot/StartBot.py")
+os.system("python3 /home/vyper/VyperBot/StartBot.py")
