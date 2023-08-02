@@ -36,7 +36,7 @@ async def on_resume():
 #Lists
 Cats = ["https://tenor.com/view/meme-cat-gif-23774444", "https://tenor.com/view/cute-kitty-best-kitty-alex-cute-pp-kitty-omg-yay-cute-kitty-munchkin-kitten-gif-15917800", "https://tenor.com/view/cat-cats-cat-love-cat-kiss-kiss-gif-24653113" , "https://tenor.com/view/cat-the-cat-he-dance-he-dance-gif-24077288", "https://tenor.com/view/cat-dancing-meme-dancing-cat-white-cat-meme-gif-24092585"]
 Compliments = ["cute", "smart", "funny", "cool"]
-AuthorizedUsers =["seventrumpets#0","svmmah#0"]
+AuthorizedUsers =[]
 
 #Logs
 def Log(Message):
@@ -66,7 +66,6 @@ async def on_message(message):
     if message.content == 'TEST':
         response = "Good Test!"
         await message.channel.send("Good Test!")
-    
     Message = f'{message.author} sent: "{message.content}" in channel: [{message.channel}]'
     Guild = str(message.guild)
     Log(Message)
@@ -85,12 +84,8 @@ async def TEST(ctx):
     await ctx.send(response)
 @bot.command()
 async def clear(ctx, amount=5):
-    Author = str(ctx.author)
-    if any(element in Author for element in AuthorizedUsers):
-        await ctx.channel.purge(limit=amount+1)
-        Log(f"{ctx} messages deleted")
-    else:
-        await ctx.reply("You are not authorized to use this command", mention_author=True)
+    await ctx.channel.purge(limit=amount+1)
+    Log(f"{ctx} messages deleted")
 @bot.command()
 async def cat(ctx):
     await ctx.channel.send(random.choice(Cats))
@@ -102,18 +97,14 @@ async def source(ctx):
     await ctx.reply("https://github.com/Vyper-Dev/VyperBot", mention_author=False)
 @bot.command()
 async def log(ctx):
-    Author = str(ctx.author)
-    if any(element in Author for element in AuthorizedUsers):
-        global a
-        a.close()
-        a = open(f"Log-{dt_string}.txt", "r")
-        log = str(a.readlines())
-        await ctx.channel.send(f"```{log}```")
-        a.close()
-        a = open(f"Log-{dt_string}.txt", "a")
-        return a
-    else:
-        await ctx.reply("You are not authorized to use this command", mention_author=True)
+    global a
+    a.close()
+    a = open(f"Log-{dt_string}.txt", "r")
+    log = str(a.readlines())
+    await ctx.channel.send(f"```{log}```")
+    a.close()
+    a = open(f"Log-{dt_string}.txt", "a")
+    return a
 @bot.command()
 async def calc(ctx, num, sign, num2):
     num = float(num)
@@ -149,39 +140,31 @@ async def factors(ctx, num):
 #Utilities
 @bot.command()
 async def close(ctx):
-    Author = str(ctx.author)
-    if any(element in Author for element in AuthorizedUsers):
-        a.close()
-        ec = []
-        Name = f"Log-{dt_string}.txt"
-        Encryption_Bot.ReadFile(Name)
-        Encryption_Bot.OpenKey('Random_Characters.txt')
-        Encryption_Bot.Sort(Encryption_Bot.ec)
-        Encryption_Bot.Encrypt(Encryption_Bot.S1,Encryption_Bot.S2,Encryption_Bot.S3)
-        Encryption_Bot.Save(Name)
-        await ctx.reply("Log file(s) saved. Shutting down.", mention_author=True)
-        os.system("tmux kill-session -t Bot")
-        sys.exit()
-    else:
-        await ctx.reply("You are not authorized to use this command", mention_author=True)
+    a.close()
+    ec = []
+    Name = f"Log-{dt_string}.txt"
+    Encryption_Bot.ReadFile(Name)
+    Encryption_Bot.OpenKey('Random_Characters.txt')
+    Encryption_Bot.Sort(Encryption_Bot.ec)
+    Encryption_Bot.Encrypt(Encryption_Bot.S1,Encryption_Bot.S2,Encryption_Bot.S3)
+    Encryption_Bot.Save(Name)
+    await ctx.reply("Log file(s) saved. Shutting down.", mention_author=True)
+    os.system("tmux kill-session -t Bot")
+    sys.exit()
 @bot.command()
 async def update(ctx):
-    Author = str(ctx.author)
-    if any(element in Author for element in AuthorizedUsers):
-        a.close()
-        ec = []
-        Name = f"Log-{dt_string}.txt"
-        Encryption_Bot.ReadFile(Name)
-        Encryption_Bot.OpenKey('Random_Characters.txt')
-        Encryption_Bot.Sort(Encryption_Bot.ec)
-        Encryption_Bot.Encrypt(Encryption_Bot.S1,Encryption_Bot.S2,Encryption_Bot.S3)
-        Encryption_Bot.Save(Name)
-        await ctx.reply("Update Started. Please wait for my message in #bot-orgy", mention_author=True)
-        os.system("tmux new-session -d -s Bridge")
-        os.system("tmux send-keys -t Bridge 'python /home/vyper/VyperBot/Bridge.py' Enter")
-        sys.exit()
-    else:
-        await ctx.reply("You are not authorized to use this command", mention_author=True)
+    a.close()
+    ec = []
+    Name = f"Log-{dt_string}.txt"
+    Encryption_Bot.ReadFile(Name)
+    Encryption_Bot.OpenKey('Random_Characters.txt')
+    Encryption_Bot.Sort(Encryption_Bot.ec)
+    Encryption_Bot.Encrypt(Encryption_Bot.S1,Encryption_Bot.S2,Encryption_Bot.S3)
+    Encryption_Bot.Save(Name)
+    await ctx.reply("Update Started. Please wait for my message in #bot-orgy", mention_author=True)
+    os.system("tmux new-session -d -s Bridge")
+    os.system("tmux send-keys -t Bridge 'python /home/vyper/VyperBot/Bridge.py' Enter")
+    sys.exit()
 
 #Run the bot
 bot.run(TOKEN)
