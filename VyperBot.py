@@ -7,7 +7,7 @@ import sys
 import os
 
 #Log-{dt_string}.txt
-f = open(os.path.join(sys.path[0],"Key.txt"), 'r')
+f = open(os.path.join(sys.path[0],"Token.txt"), 'r')
 TOKEN = str(f.readline())
 intents = discord.Intents.all()
 client = discord.Client(intents=intents)
@@ -144,7 +144,7 @@ async def close(ctx):
     ec = []
     Name = f"Log-{dt_string}.txt"
     Encryption_Bot.ReadFile(Name)
-    Encryption_Bot.OpenKey('Random_Characters.txt')
+    Encryption_Bot.OpenKey('Key.txt')
     Encryption_Bot.Sort(Encryption_Bot.ec)
     Encryption_Bot.Encrypt(Encryption_Bot.S1,Encryption_Bot.S2,Encryption_Bot.S3)
     Encryption_Bot.Save(Name)
