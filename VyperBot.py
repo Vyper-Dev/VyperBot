@@ -24,7 +24,7 @@ async def on_connect():
 @bot.event
 async def on_ready():
     print(f'{bot.user} has has been successfully setup')
-    channel = bot.get_channel(1011141496554143754)
+    #channel = bot.get_channel(1011141496554143754)
     await channel.send("I'm alive!")
 @bot.event
 async def on_disconnect():
@@ -55,7 +55,7 @@ async def on_message(message):
         return
     Author = message.author
     Channel = message.channel
-    if Author == "GitHub#0000" and Channel == "update-handler":
+    """if Author == "GitHub#0000" and Channel == "update-handler":
         a.close()
         channel = bot.get_channel(1040844611754676294)
         await channel.send("@VYPR#8664 Pushed an update. Starting update process now, please wait 15-30 seconds.")
@@ -63,6 +63,7 @@ async def on_message(message):
         os.system("tmux new-session -d -s Bridge")
         os.system("tmux send-keys -t Bridge 'python /home/vyper/Bridge.py' Enter")
         sys.exit()
+    """
     if message.content == 'TEST':
         response = "Good Test!"
         await message.channel.send("Good Test!")
@@ -161,7 +162,7 @@ async def update(ctx):
     Encryption_Bot.Sort(Encryption_Bot.ec)
     Encryption_Bot.Encrypt(Encryption_Bot.S1,Encryption_Bot.S2,Encryption_Bot.S3)
     Encryption_Bot.Save(Name)
-    await ctx.reply("Update Started. Please wait for my message in #bot-orgy", mention_author=True)
+    await ctx.reply("Update Started. Please wait for my message in [Channel]", mention_author=True)
     os.system("tmux new-session -d -s Bridge")
     os.system("tmux send-keys -t Bridge 'python /home/vyper/VyperBot/Bridge.py' Enter")
     sys.exit()
