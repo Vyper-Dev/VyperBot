@@ -146,6 +146,8 @@ async def factors(ctx, num):
 #Utilities
 @bot.command()
 async def close(ctx):
+    global Author
+    global AuthorizedUsers
     if Author in AuthorizedUsers:
         a.close()
         ec = []
