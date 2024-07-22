@@ -36,7 +36,10 @@ async def on_resume():
 #Lists
 Cats = ["https://tenor.com/view/meme-cat-gif-23774444", "https://tenor.com/view/cute-kitty-best-kitty-alex-cute-pp-kitty-omg-yay-cute-kitty-munchkin-kitten-gif-15917800", "https://tenor.com/view/cat-cats-cat-love-cat-kiss-kiss-gif-24653113" , "https://tenor.com/view/cat-the-cat-he-dance-he-dance-gif-24077288", "https://tenor.com/view/cat-dancing-meme-dancing-cat-white-cat-meme-gif-24092585"]
 Compliments = ["cute", "smart", "funny", "cool"]
-AuthorizedUsers =[]
+global AuthorizedUsers
+AuthorizedUsers =["Rucryeno#0"]
+global Author
+global Channel
 
 #Logs
 def Log(Message):
@@ -53,6 +56,7 @@ async def on_typing(Channel, User, When):
 async def on_message(message):
     if message.author == bot.user:
         return
+    global Author
     Author = message.author
     Channel = message.channel
     """if Author == "GitHub#0000" and Channel == "update-handler":
@@ -81,8 +85,9 @@ async def on_message_delete(message):
 #Commands
 @bot.command()
 async def TEST(ctx):
-    response = "Good Command Test"
-    await ctx.send(response)
+    if Author in AuthorizedUsers:
+        response = "Good Command Test"
+        await ctx.send(response)
 @bot.command()
 async def clear(ctx, amount=5):
     await ctx.channel.purge(limit=amount+1)
@@ -141,17 +146,18 @@ async def factors(ctx, num):
 #Utilities
 @bot.command()
 async def close(ctx):
-    a.close()
-    ec = []
-    Name = f"Log-{dt_string}.txt"
-    Encryption_Bot.ReadFile(Name)
-    Encryption_Bot.OpenKey('Key.txt')
-    Encryption_Bot.Sort(Encryption_Bot.ec)
-    Encryption_Bot.Encrypt(Encryption_Bot.S1,Encryption_Bot.S2,Encryption_Bot.S3)
-    Encryption_Bot.Save(Name)
-    await ctx.reply("Log file(s) saved. Shutting down.", mention_author=True)
-    os.system("tmux kill-session -t Bot")
-    sys.exit()
+    if Author in AuthorizedUsers:
+        a.close()
+        ec = []
+        Name = f"Log-{dt_string}.txt"
+        Encryption_Bot.ReadFile(Name)
+        Encryption_Bot.OpenKey('Key.txt')
+        Encryption_Bot.Sort(Encryption_Bot.ec)
+        Encryption_Bot.Encrypt(Encryption_Bot.S1,Encryption_Bot.S2,Encryption_Bot.S3)
+        Encryption_Bot.Save(Name)
+        await ctx.reply("Log file(s) saved. Shutting down.", mention_author=True)
+        os.system("tmux kill-session -t Bot")
+        sys.exit()
 @bot.command()
 async def update(ctx):
     a.close()
