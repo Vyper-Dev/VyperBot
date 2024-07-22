@@ -36,7 +36,7 @@ async def on_resume():
 #Lists
 Cats = ["https://tenor.com/view/meme-cat-gif-23774444", "https://tenor.com/view/cute-kitty-best-kitty-alex-cute-pp-kitty-omg-yay-cute-kitty-munchkin-kitten-gif-15917800", "https://tenor.com/view/cat-cats-cat-love-cat-kiss-kiss-gif-24653113" , "https://tenor.com/view/cat-the-cat-he-dance-he-dance-gif-24077288", "https://tenor.com/view/cat-dancing-meme-dancing-cat-white-cat-meme-gif-24092585"]
 Compliments = ["cute", "smart", "funny", "cool"]
-AuthorizedUsers =['Rucryeno']
+AuthorizedUsers =[]
 
 #Logs
 def Log(Message):
@@ -44,18 +44,16 @@ def Log(Message):
 @bot.event
 async def on_typing(Channel, User, When):
     Typing = f'{User.display_name} has started typing in channel: [{Channel.name}]'
-    Guild = str(Channel.guild)
     Log(Typing)
     print(Typing)
     
 #Actions based on text recogntion
 @bot.event
 async def on_message(message):
-    global AuthorizedUsers
     if message.author == bot.user:
         return
-    if message.author in AuthorizedUsers:
-        print(message.author)
+    global Author
+    global Channel
     Author = message.author
     Channel = message.channel
     """if Author == "GitHub#0000" and Channel == "update-handler":
@@ -68,10 +66,8 @@ async def on_message(message):
         sys.exit()
     """
     if message.content == 'TEST':
-        response = "Good Test!"
         await message.channel.send("Good Test!")
     Message = f'{message.author} sent: "{message.content}" in channel: [{message.channel}]'
-    Guild = str(message.guild)
     Log(Message)
     print(Message)
     await bot.process_commands(message)
@@ -86,19 +82,25 @@ async def on_message_delete(message):
 async def TEST(ctx):
     response = "Good Command Test"
     await ctx.send(response)
+
 @bot.command()
 async def clear(ctx, amount=5):
-    await ctx.channel.purge(limit=amount+1)
-    Log(f"{ctx} messages deleted")
+    if Author in AuthorizedUsers:
+        await ctx.channel.purge(limit=amount+1)
+        Log(f"{ctx} messages deleted")
+
 @bot.command()
 async def cat(ctx):
     await ctx.channel.send(random.choice(Cats))
+
 @bot.command()
 async def summer(ctx):
     await ctx.reply("is very " + random.choice(Compliments) + "!", mention_author=True)
+
 @bot.command()
 async def source(ctx):
     await ctx.reply("https://github.com/Vyper-Dev/VyperBot", mention_author=False)
+
 @bot.command()
 async def log(ctx):
     global a
@@ -109,6 +111,7 @@ async def log(ctx):
     a.close()
     a = open(f"Log-{dt_string}.txt", "a")
     return a
+
 @bot.command()
 async def calc(ctx, num, sign, num2):
     num = float(num)
@@ -126,6 +129,7 @@ async def calc(ctx, num, sign, num2):
     if sign == "%":
         Total = num % num2
     await ctx.reply(Total)
+
 @bot.command()
 async def factors(ctx, num):
     X = 1
@@ -155,6 +159,7 @@ async def close(ctx):
     await ctx.reply("Log file(s) saved. Shutting down.", mention_author=True)
     os.system("tmux kill-session -t Bot")
     sys.exit()
+
 @bot.command()
 async def update(ctx):
     a.close()
