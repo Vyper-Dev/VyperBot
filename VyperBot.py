@@ -53,6 +53,8 @@ async def on_typing(Channel, User, When):
 async def on_message(message):
     if message.author == bot.user:
         return
+    if message.author == bot.user:
+        print(message.author)
     Author = message.author
     Channel = message.channel
     """if Author == "GitHub#0000" and Channel == "update-handler":
