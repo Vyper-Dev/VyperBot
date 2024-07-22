@@ -25,7 +25,7 @@ async def on_connect():
 async def on_ready():
     print(f'{bot.user} has has been successfully setup')
     #channel = bot.get_channel(1011141496554143754)
-    await channel.send("I'm alive!")
+    #await channel.send("I'm alive!")
 @bot.event
 async def on_disconnect():
     print(f'{bot.user} has disconnected from Discord')
@@ -36,7 +36,7 @@ async def on_resume():
 #Lists
 Cats = ["https://tenor.com/view/meme-cat-gif-23774444", "https://tenor.com/view/cute-kitty-best-kitty-alex-cute-pp-kitty-omg-yay-cute-kitty-munchkin-kitten-gif-15917800", "https://tenor.com/view/cat-cats-cat-love-cat-kiss-kiss-gif-24653113" , "https://tenor.com/view/cat-the-cat-he-dance-he-dance-gif-24077288", "https://tenor.com/view/cat-dancing-meme-dancing-cat-white-cat-meme-gif-24092585"]
 Compliments = ["cute", "smart", "funny", "cool"]
-AuthorizedUsers =[Rucryeno]
+AuthorizedUsers =['Rucryeno']
 
 #Logs
 def Log(Message):
