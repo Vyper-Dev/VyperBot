@@ -71,6 +71,7 @@ async def on_message(message):
     Log(Message)
     print(Message)
     await bot.process_commands(message)
+    return Author, Channel
 
 #Log when a message is deleted
 @bot.event
@@ -87,9 +88,6 @@ async def TEST(ctx):
 async def clear(ctx, amount=5):
     print(Author)
     print(AuthorizedUsers)
-    #global Author
-    global AuthorizedUsers
-    #Author = f'{Author}'
     if Author in AuthorizedUsers:
         await ctx.channel.purge(limit=amount+1)
         Log(f"{ctx} messages deleted")
