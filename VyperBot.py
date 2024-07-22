@@ -36,6 +36,9 @@ async def on_resume():
 #Lists
 Cats = ["https://tenor.com/view/meme-cat-gif-23774444", "https://tenor.com/view/cute-kitty-best-kitty-alex-cute-pp-kitty-omg-yay-cute-kitty-munchkin-kitten-gif-15917800", "https://tenor.com/view/cat-cats-cat-love-cat-kiss-kiss-gif-24653113" , "https://tenor.com/view/cat-the-cat-he-dance-he-dance-gif-24077288", "https://tenor.com/view/cat-dancing-meme-dancing-cat-white-cat-meme-gif-24092585"]
 Compliments = ["cute", "smart", "funny", "cool"]
+global AuthorizedUsers
+global Author
+global Channel
 AuthorizedUsers =['rucryeno#0']
 
 #Logs
@@ -52,8 +55,6 @@ async def on_typing(Channel, User, When):
 async def on_message(message):
     if message.author == bot.user:
         return
-    global Author
-    global Channel
     Author = message.author
     Channel = message.channel
     """if Author == "GitHub#0000" and Channel == "update-handler":
@@ -85,7 +86,7 @@ async def TEST(ctx):
     await ctx.send(response)
 
 @bot.command()
-async def clear(ctx, amount=5):
+async def clear(ctx, Author, amount=5):
     print(Author)
     print(AuthorizedUsers)
     if Author in AuthorizedUsers:
