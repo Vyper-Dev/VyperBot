@@ -87,9 +87,9 @@ async def TEST(ctx):
 async def clear(ctx, amount=5):
     print(Author)
     print(AuthorizedUsers)
-    global Author
+    #global Author
     global AuthorizedUsers
-    Author = f'{Author}'
+    #Author = f'{Author}'
     if Author in AuthorizedUsers:
         await ctx.channel.purge(limit=amount+1)
         Log(f"{ctx} messages deleted")
