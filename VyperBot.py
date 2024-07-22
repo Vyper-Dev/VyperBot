@@ -162,18 +162,21 @@ async def close(ctx):
         sys.exit()
 @bot.command()
 async def update(ctx):
-    a.close()
-    ec = []
-    Name = f"Log-{dt_string}.txt"
-    Encryption_Bot.ReadFile(Name)
-    Encryption_Bot.OpenKey('Random_Characters.txt')
-    Encryption_Bot.Sort(Encryption_Bot.ec)
-    Encryption_Bot.Encrypt(Encryption_Bot.S1,Encryption_Bot.S2,Encryption_Bot.S3)
-    Encryption_Bot.Save(Name)
-    await ctx.reply("Update Started. Please wait for my message in [Channel]", mention_author=True)
-    os.system("tmux new-session -d -s Bridge")
-    os.system("tmux send-keys -t Bridge 'python /home/vyper/VyperBot/Bridge.py' Enter")
-    sys.exit()
+    global Author
+    global AuthorizedUsers
+    if Author in AuthorizedUsers:
+        a.close()
+        ec = []
+        Name = f"Log-{dt_string}.txt"
+        Encryption_Bot.ReadFile(Name)
+        Encryption_Bot.OpenKey('Random_Characters.txt')
+        Encryption_Bot.Sort(Encryption_Bot.ec)
+        Encryption_Bot.Encrypt(Encryption_Bot.S1,Encryption_Bot.S2,Encryption_Bot.S3)
+        Encryption_Bot.Save(Name)
+        await ctx.reply("Update Started. Please wait for my message in [Channel]", mention_author=True)
+        os.system("tmux new-session -d -s Bridge")
+        os.system("tmux send-keys -t Bridge 'python /home/vyper/VyperBot/Bridge.py' Enter")
+        sys.exit()
 
 #Run the bot
 bot.run(TOKEN)
