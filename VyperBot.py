@@ -86,12 +86,9 @@ async def TEST(ctx):
     await ctx.send(response)
 
 @bot.command()
-async def clear(ctx, Author, amount=5):
-    print(Author)
-    print(AuthorizedUsers)
-    if Author in AuthorizedUsers:
-        await ctx.channel.purge(limit=amount+1)
-        Log(f"{ctx} messages deleted")
+async def clear(ctx, amount=5):
+    await ctx.channel.purge(limit=amount+1)
+    Log(f"{ctx} messages deleted")
 
 @bot.command()
 async def cat(ctx):
